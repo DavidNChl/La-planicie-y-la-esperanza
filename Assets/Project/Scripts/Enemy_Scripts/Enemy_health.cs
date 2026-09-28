@@ -22,7 +22,7 @@ public class SaludEnemigo : MonoBehaviour
     void Start()
     {
         vidaActual = vidaMaxima;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         col = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -76,4 +76,5 @@ public class SaludEnemigo : MonoBehaviour
 
         Destroy(gameObject, tiempoDestruccionTrasMuerte);
     }
+    
 }

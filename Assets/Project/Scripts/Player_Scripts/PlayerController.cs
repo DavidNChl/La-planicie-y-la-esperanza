@@ -1,8 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
 
 public class ControladorJugador : MonoBehaviour
 {
+    private CinemachineImpulseSource impulseSource;
+
+    [Header("Detección de Caída / Shake")]
+    public float velocidadMinimaCaidaShake = -8f; // Caídas más rápidas que esto activan el shake
+    private float velocidadCaidaPrevia;           // Para registrar la velocidad ANTES de la colisión
+
     [Header("Movimiento")]
     public float velocidad = 8f;
     public float fuerzaSalto = 12f;
@@ -33,6 +40,7 @@ public class ControladorJugador : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     void Update()
@@ -51,10 +59,9 @@ public class ControladorJugador : MonoBehaviour
             }
         }
 
-        // Inactividad y activacion de animacion
+        // Inactividad y activación de animación
         if (movimientoH == 0f && enSuelo)
         {
-            
             contadorInactividad += Time.deltaTime;
 
             if (contadorInactividad >= tiempoParaDescansar && !estaDescansando)
@@ -72,26 +79,26 @@ public class ControladorJugador : MonoBehaviour
             estaDescansando = false;
         }
 
-        // detecta suelo
+        // Detecta suelo
         if (puntoSuelo != null)
         {
             enSuelo = Physics2D.OverlapCircle(puntoSuelo.position, radioDeteccion, capaSuelo);
         }
 
-        // animacion de caminata canina
+        // Animación de caminata
         if (animator != null)
         {
             animator.SetBool("camina", movimientoH != 0f);
         }
 
-        // configuracion de salto
+        // Configuración de salto
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame && enSuelo)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
             contadorInactividad = 0f; 
         }
 
-        // seccion del disparo
+        // Sección del disparo
         bool presionoDisparo = (Keyboard.current != null && Keyboard.current.jKey.wasPressedThisFrame) ||
                                (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame);
 
@@ -102,7 +109,7 @@ public class ControladorJugador : MonoBehaviour
             contadorInactividad = 0f; 
         }
 
-        // voltear a los lados
+        // Voltear a los lados
         if (movimientoH > 0 && !mirandoDerecha)
         {
             Girar();
@@ -111,11 +118,13 @@ public class ControladorJugador : MonoBehaviour
         {
             Girar();
         }
-        
     }
 
     void FixedUpdate()
     {
+        // Guardamos la velocidad vertical justo antes de que la física procese una colisión
+        velocidadCaidaPrevia = rb.linearVelocity.y;
+
         rb.linearVelocity = new Vector2(movimientoH * velocidad, rb.linearVelocity.y);
     }
 
@@ -142,7 +151,16 @@ public class ControladorJugador : MonoBehaviour
         }
     }
 
-
-
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Evaluamos la velocidad que traía JUSTO ANTES del golpe
+        if (velocidadCaidaPrevia <= velocidadMinimaCaidaShake)
+        {
+            if (impulseSource != null)
+            {
+                // Dispara el impulso básico con los parámetros del Inspector
+                impulseSource.GenerateImpulse();
+            }
+        }
+    }
 }
