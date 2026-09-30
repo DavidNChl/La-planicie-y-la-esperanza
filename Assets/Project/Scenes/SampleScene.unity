@@ -318,9 +318,12 @@ GameObject:
   - component: {fileID: 236341511}
   - component: {fileID: 236341510}
   - component: {fileID: 236341515}
-  - component: {fileID: 236341516}
   - component: {fileID: 236341517}
   - component: {fileID: 236341518}
+  - component: {fileID: 236341522}
+  - component: {fileID: 236341521}
+  - component: {fileID: 236341520}
+  - component: {fileID: 236341519}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -492,30 +495,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &236341516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236341509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd1fb14c4652acb439ecff93602afc5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControladorJugador
-  velocidadMinimaCaidaShake: -10
-  velocidad: 3
-  fuerzaSalto: 10
-  prefabProyectil: {fileID: 5338143498835851487, guid: fe4161e0a297f7f4799e9455d6189e3c, type: 3}
-  puntoDisparo: {fileID: 1393568838}
-  cadenciaDisparo: 1
-  puntoSuelo: {fileID: 985389582}
-  radioDeteccion: 0.15
-  capaSuelo:
-    serializedVersion: 2
-    m_Bits: 8
-  tiempoParaDescansar: 5
 --- !u!114 &236341517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +563,66 @@ MonoBehaviour:
   vidaMaxima: 5
   tiempoInvulnerabilidad: 1.5
   barraVida: {fileID: 953759745}
+--- !u!114 &236341519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236341509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f890c415138b947bae44fccaea5e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JugadorMovimiento
+  velocidad: 8
+  fuerzaSalto: 12
+  puntoSuelo: {fileID: 985389582}
+  radioDeteccion: 0.15
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 8
+  velocidadMinimaCaidaShake: -8
+--- !u!114 &236341520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236341509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0213ab9147431498b995f0748f2eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JugadorInput
+--- !u!114 &236341521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236341509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b2bd4f059756f74189dc7d5a439bffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JugadorAtaque
+  prefabProyectil: {fileID: 5338143498835851487, guid: fe4161e0a297f7f4799e9455d6189e3c, type: 3}
+  puntoDisparo: {fileID: 1393568838}
+  cadenciaDisparo: 0.4
+--- !u!114 &236341522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236341509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39db4eda41a67814f93e697cf3372fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JugadorAnimaciones
+  tiempoParaDescansar: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1052,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!4 &758316022 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7691352368218197759, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+  m_PrefabInstance: {fileID: 5673359100396365601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &761504773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1436,94 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1 &1156809331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 119221631076681837, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+  m_PrefabInstance: {fileID: 5673359100396365601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1156809337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156809331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843182887674cd04b93d5f24cef391d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventosAnimacionEnemigo
+--- !u!114 &1156809338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156809331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86d9c6505e619448aa9163c17e23848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoMovimiento
+  velocidad: 3.5
+  fuerzaSalto: 9
+--- !u!114 &1156809339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156809331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ec5cf436bebbe4aa9619ff3068b3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoBrainIA
+  transformJugador: {fileID: 0}
+--- !u!114 &1156809340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156809331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b63cf7271c245811895ea05560d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoDeteccion
+  puntoSuelo: {fileID: 758316022}
+  radioSuelo: 0.2
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 8
+  detectorSuelo: {fileID: 1971986222}
+  distanciaRaycastSuelo: 1.5
+  detectorProyectil: {fileID: 1560482336}
+  distanciaDeteccionProyectil: 3
+  capaProyectil:
+    serializedVersion: 2
+    m_Bits: 64
+  detectorPared: {fileID: 1987501435}
+  distanciaRaycastPared: 0.8
+  capaPared:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &1156809341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156809331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1716b6b2796acd341a10ea528fc01741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoAtaque
+  distanciaAtaque: 1.2
+  danoAtaque: 1
+  cadenciaAtaque: 1.5
 --- !u!1 &1274604171
 GameObject:
   m_ObjectHideFlags: 0
@@ -5070,6 +5202,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 236341513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1560482336 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4012876572573458244, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+  m_PrefabInstance: {fileID: 5673359100396365601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1574348267
 GameObject:
   m_ObjectHideFlags: 0
@@ -5666,6 +5803,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!4 &1971986222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461204108458473421, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+  m_PrefabInstance: {fileID: 5673359100396365601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1987501435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6627511561804092130, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+  m_PrefabInstance: {fileID: 5673359100396365601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5673359100396365601
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5734,10 +5881,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3708129357729693744, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 119221631076681837, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156809341}
+    - targetCorrespondingSourceObject: {fileID: 119221631076681837, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156809340}
+    - targetCorrespondingSourceObject: {fileID: 119221631076681837, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156809339}
+    - targetCorrespondingSourceObject: {fileID: 119221631076681837, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156809338}
+    - targetCorrespondingSourceObject: {fileID: 119221631076681837, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156809337}
   m_SourcePrefab: {fileID: 100100000, guid: 380c9a53a186e0f4e84ce543301de84f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -12,7 +12,11 @@ GameObject:
   - component: {fileID: 2942371180370776591}
   - component: {fileID: 6457481205743843494}
   - component: {fileID: 5853795215935360315}
-  - component: {fileID: 3708129357729693744}
+  - component: {fileID: 7452857285962686289}
+  - component: {fileID: 8935398392121751497}
+  - component: {fileID: 8653274920387954101}
+  - component: {fileID: 1636243052070869570}
+  - component: {fileID: 3523325072641760824}
   m_Layer: 3
   m_Name: Enemigo
   m_TagString: Enemigo
@@ -121,7 +125,7 @@ MonoBehaviour:
   barraVida: {fileID: 8259732310092286320}
   efectoDestruccion: {fileID: 5980872070815846703, guid: 8962dcc91bed58c4d8858602373ff013, type: 3}
   tiempoDestruccionTrasMuerte: 0.8
---- !u!114 &3708129357729693744
+--- !u!114 &7452857285962686289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,24 +134,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 119221631076681837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f9db4d3769c724dba1cbae42d03bc9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1716b6b2796acd341a10ea528fc01741, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ControladorEnemigoIA
-  velocidad: 1
-  fuerzaSalto: 8.1
-  transformJugador: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoAtaque
   distanciaAtaque: 1.2
   danoAtaque: 1
-  cadenciaAtaque: 2
+  cadenciaAtaque: 1.5
+--- !u!114 &8935398392121751497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119221631076681837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b63cf7271c245811895ea05560d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoDeteccion
   puntoSuelo: {fileID: 7691352368218197759}
   radioSuelo: 0.2
-  detectorSuelo: {fileID: 461204108458473421}
-  distanciaRaycastSuelo: 1.5
   capaSuelo:
     serializedVersion: 2
     m_Bits: 8
+  detectorSuelo: {fileID: 461204108458473421}
+  distanciaRaycastSuelo: 1.5
   detectorProyectil: {fileID: 4012876572573458244}
-  distanciaDeteccionProyectil: 5
+  distanciaDeteccionProyectil: 3
   capaProyectil:
     serializedVersion: 2
     m_Bits: 64
@@ -156,6 +169,45 @@ MonoBehaviour:
   capaPared:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &8653274920387954101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119221631076681837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ec5cf436bebbe4aa9619ff3068b3c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoBrainIA
+  transformJugador: {fileID: 0}
+--- !u!114 &1636243052070869570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119221631076681837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86d9c6505e619448aa9163c17e23848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemigoMovimiento
+  velocidad: 3.5
+  fuerzaSalto: 9
+--- !u!114 &3523325072641760824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119221631076681837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 843182887674cd04b93d5f24cef391d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventosAnimacionEnemigo
 --- !u!1 &1096180112507793189
 GameObject:
   m_ObjectHideFlags: 0

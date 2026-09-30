@@ -2,20 +2,18 @@ using UnityEngine;
 
 public class EventosAnimacionEnemigo : MonoBehaviour
 {
-    private ControladorEnemigoIA controladorIA;
+    private EnemigoBrainIA cerebroIA;
 
     void Start()
     {
-        // Busca el script ControladorEnemigoIA en el objeto Padre
-        controladorIA = GetComponentInParent<ControladorEnemigoIA>();
+        cerebroIA = GetComponentInParent<EnemigoBrainIA>();
     }
 
-    // Este es el método que seleccionaremos en el Animation Event
     public void EventoGolpeAtaque()
     {
-        if (controladorIA != null)
+        if (cerebroIA != null)
         {
-            controladorIA.AplicarDanoAtaque();
+            cerebroIA.AplicarDanoAtaque();
         }
     }
 }
