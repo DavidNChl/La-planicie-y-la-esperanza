@@ -26,7 +26,13 @@ public class JugadorAtaque : MonoBehaviour
 
     private void Disparar()
     {
+        if (puntoDisparo == null) return;
+
         if (prefabProyectil != null && puntoDisparo != null)
+        {
+            PoolProyectiles.Instancia.ObtenerProyectil(puntoDisparo.position, puntoDisparo.rotation);
+        }
+        else if (prefabProyectil != null)
         {
             Instantiate(prefabProyectil, puntoDisparo.position, puntoDisparo.rotation);
         }
