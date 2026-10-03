@@ -1,16 +1,55 @@
 using UnityEngine;
 
-public class PlayerAudio : MonoBehaviour
+public class AudioJugador : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private SaludJugador salud;
+    private JugadorMovimiento movimiento;
+
+    private void Awake()
     {
-        
+        salud = GetComponent<SaludJugador>();
+        movimiento = GetComponent<JugadorMovimiento>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        // Suscribirse al evento de muerte 
+        if (salud != null)
+        {
+            salud.OnMuerte.AddListener(ReproducirSonidoMuerte);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (salud != null)
+        {
+            salud.OnMuerte.RemoveListener(ReproducirSonidoMuerte);
+        }
+    }
+    //Metodos de mencion
+
+    public void ReproducirSonidoSalto()
+    {
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.ReproducirSFX(AudioManager.Instancia.sfxSalto);
+        }
+    }
+
+    public void ReproducirSonidoDano()
+    {
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.ReproducirSFX(AudioManager.Instancia.sfxDano);
+        }
+    }
+
+    public void ReproducirSonidoMuerte()
+    {
+        if (AudioManager.Instancia != null)
+        {
+            AudioManager.Instancia.ReproducirSFX(AudioManager.Instancia.sfxMuerte);
+        }
     }
 }

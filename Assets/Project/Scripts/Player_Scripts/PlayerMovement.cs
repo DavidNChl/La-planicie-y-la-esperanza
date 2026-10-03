@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unity.Cinemachine;
 
 public class JugadorMovimiento : MonoBehaviour
 {
@@ -12,37 +11,29 @@ public class JugadorMovimiento : MonoBehaviour
     public float radioDeteccion = 0.35f;
     public LayerMask capaSuelo;
 
-    [Header("Detección de Caída / Shake")]
-    public float velocidadMinimaCaidaShake = -8f;
-    private float velocidadCaidaPrevia;
-
-    // Propiedades públicas para que otros scripts sepan el estado físico
     public bool EnSuelo { get; private set; }
     public bool MirandoDerecha { get; private set; } = true;
 
     private Rigidbody2D rb;
     private JugadorInput input;
-    private CinemachineImpulseSource impulseSource;
+    private Animator animator;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         input = GetComponent<JugadorInput>();
-        impulseSource = GetComponent<CinemachineImpulseSource>();
+        animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         ComprobarSuelo();
         ProcesarSalto();
         ProcesarGiro();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        velocidadCaidaPrevia = rb.linearVelocity.y;
-        
-        // Movimiento horizontal en física
         rb.linearVelocity = new Vector2(input.MovimientoH * velocidad, rb.linearVelocity.y);
     }
 
@@ -59,7 +50,22 @@ public class JugadorMovimiento : MonoBehaviour
     {
         if (input.SaltoPresionado && EnSuelo)
         {
+            if (animator != null)
+            {
+                AnimatorStateInfo estadoActual = animator.GetCurrentAnimatorStateInfo(0);
+                if (estadoActual.IsTag("SinSalto"))
+                {
+                    return; 
+                }
+            }
+
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, fuerzaSalto);
+           
+            AudioJugador audioJugador = GetComponent<AudioJugador>();
+            if (audioJugador != null)
+            {
+                audioJugador.ReproducirSonidoSalto();
+            }
         }
     }
 
@@ -69,14 +75,6 @@ public class JugadorMovimiento : MonoBehaviour
         {
             MirandoDerecha = !MirandoDerecha;
             transform.Rotate(0f, 180f, 0f);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (velocidadCaidaPrevia <= velocidadMinimaCaidaShake && impulseSource != null)
-        {
-            impulseSource.GenerateImpulse();
         }
     }
 

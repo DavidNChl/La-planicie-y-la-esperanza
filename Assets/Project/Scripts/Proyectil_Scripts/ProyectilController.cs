@@ -20,13 +20,11 @@ public class Proyectil : MonoBehaviour
 
     private void OnEnable()
     {
-        // Aplicar velocidad cada vez que se saca de la pool
         if (rb != null)
         {
             rb.linearVelocity = transform.right * velocidad;
         }
 
-        // Iniciar temporizador para desactivar si no choca con nada
         rutinaDesactivacion = StartCoroutine(DesactivarPorTiempo());
     }
 
