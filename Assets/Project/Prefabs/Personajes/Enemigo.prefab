@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ce72fe1fb5e5b4c87aad5b9641f188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaludEnemigo
-  vidaMaxima: 3
+  vidaMaxima: 1
   barraVida: {fileID: 8259732310092286320}
   efectoDestruccion: {fileID: 5980872070815846703, guid: 8962dcc91bed58c4d8858602373ff013, type: 3}
   tiempoDestruccionTrasMuerte: 0.8
@@ -513,8 +513,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1326154115
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4723107735738678597, guid: cabc5e9ab209b8c4da50e77ff2aa9f39, type: 3}
@@ -741,7 +741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7691352368218197759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: puntoSuelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

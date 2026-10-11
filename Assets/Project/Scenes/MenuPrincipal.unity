@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ControladorFlechaUI
   rectFlecha: {fileID: 756037796}
-  offsetHorizontal: -78
+  offsetHorizontal: -125
   velocidadMovimiento: 15
 --- !u!1 &448765619
 GameObject:

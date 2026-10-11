@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip sfxSalto;
     public AudioClip sfxDano;
     public AudioClip sfxMuerte;
+    public AudioClip sfxEntrarAgua;
+    public AudioClip sfxSalirAgua;
 
     private void Awake()
     {
